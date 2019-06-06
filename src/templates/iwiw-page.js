@@ -4,7 +4,7 @@ import { graphql } from 'gatsby'
 import Layout from '../components/Layout'
 import Content, { HTMLContent } from '../components/Content'
 
-export const IwiwPageTemplate = ({ title, content, contentComponent }) => {
+export const IwiwPageTemplate = ({ title, person, contentComponent }) => {
   const PageContent = contentComponent || Content
 
   return (
@@ -16,7 +16,9 @@ export const IwiwPageTemplate = ({ title, content, contentComponent }) => {
               <h2 className="title is-size-3 has-text-weight-bold is-bold-light">
                 {title}
               </h2>
-              <PageContent className="content" content={content} />
+               {person.map(p => (
+                   <div>name: {p.name}</div>
+               ))}
             </div>
           </div>
         </div>
@@ -52,11 +54,15 @@ IwiwPage.propTypes = {
 export default IwiwPage
 
 export const aboutPageQuery = graphql`
-  query IwiwPage($id: String!) {
-    markdownRemark(id: { eq: $id }) {
-      html
+query IwiwPage($id: String!) {
+    markdownRemark(id: {eq: $id}) {
       frontmatter {
         title
+        person {
+          fields
+          name
+          position
+        }
       }
     }
   }
