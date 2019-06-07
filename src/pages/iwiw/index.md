@@ -1,5 +1,5 @@
 ---
-templateKey: about-page
+templateKey: iwiw-page
 title: Who is who
 person:
   - fields: |-

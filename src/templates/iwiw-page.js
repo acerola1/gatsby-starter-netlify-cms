@@ -2,10 +2,9 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import { graphql } from 'gatsby'
 import Layout from '../components/Layout'
-import Content, { HTMLContent } from '../components/Content'
+import { HTMLContent } from '../components/Content'
 
 export const IwiwPageTemplate = ({ title, person, contentComponent }) => {
-  const PageContent = contentComponent || Content
 
   return (
     <section className="section section--gradient">
@@ -14,7 +13,7 @@ export const IwiwPageTemplate = ({ title, person, contentComponent }) => {
           <div className="column is-10 is-offset-1">
             <div className="section">
               <h2 className="title is-size-3 has-text-weight-bold is-bold-light">
-                {title}
+                {title + '%%%%'}
               </h2>
                {person.map(p => (
                    <div>name: {p.name}</div>
@@ -55,15 +54,15 @@ export default IwiwPage
 
 export const aboutPageQuery = graphql`
 query IwiwPage($id: String!) {
-    markdownRemark(id: {eq: $id}) {
-      frontmatter {
-        title
-        person {
-          fields
-          name
-          position
-        }
+  markdownRemark(id: {eq: $id}) {
+    frontmatter {
+      title
+      person {
+        fields
+        name
+        position
       }
     }
   }
+}
 `
