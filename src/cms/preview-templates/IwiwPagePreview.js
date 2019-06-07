@@ -7,7 +7,7 @@ const IwiwPagePreview = ({ entry, widgetFor }) => {
   return (  
     <IwiwPageTemplate
       title={data.title}
-      persons={data}
+      persons={data.persons}
     />
   )
 }
