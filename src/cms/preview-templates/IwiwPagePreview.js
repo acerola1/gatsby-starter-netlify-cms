@@ -5,6 +5,7 @@ import { IwiwPageTemplate } from '../../templates/iwiw-page'
 const IwiwPagePreview = ({ entry, widgetFor }) => (
   <IwiwPageTemplate
     title={entry.getIn(['data', 'title'])}
+    persons={entry.getIn(['data', 'person'])}
     content={widgetFor('body')}
   />
 )

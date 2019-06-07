@@ -4,7 +4,7 @@ import { graphql } from 'gatsby'
 import Layout from '../components/Layout'
 import { HTMLContent } from '../components/Content'
 
-export const IwiwPageTemplate = ({ title, person, contentComponent }) => {
+export const IwiwPageTemplate = ({ title, persons, contentComponent }) => {
 
   return (
     <section className="section section--gradient">
@@ -15,7 +15,7 @@ export const IwiwPageTemplate = ({ title, person, contentComponent }) => {
               <h2 className="title is-size-3 has-text-weight-bold is-bold-light">
                 {title + '%%%%'}
               </h2>
-               {person.map(p => (
+               {persons.map(p => (
                    <div>name: {p.name}</div>
                ))}
             </div>
@@ -38,8 +38,8 @@ const IwiwPage = ({ data }) => {
   return (
     <Layout>
       <IwiwPageTemplate
-        contentComponent={HTMLContent}
         title={post.frontmatter.title}
+        persons={post.frontmatter.person}
         content={post.html}
       />
     </Layout>
