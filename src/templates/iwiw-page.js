@@ -2,9 +2,9 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import { graphql } from 'gatsby'
 import Layout from '../components/Layout'
-import { HTMLContent } from '../components/Content'
+import PreviewCompatibleImage from '../components/PreviewCompatibleImage'
 
-export const IwiwPageTemplate = ({ title, persons, contentComponent }) => {
+export const IwiwPageTemplate = ({ title, persons }) => {
 
   return (
     <section className="section section--gradient">
@@ -13,10 +13,15 @@ export const IwiwPageTemplate = ({ title, persons, contentComponent }) => {
           <div className="column is-10 is-offset-1">
             <div className="section">
               <h2 className="title is-size-3 has-text-weight-bold is-bold-light">
-                {title + '%%%%'}
+                {title}
               </h2>
                {persons.map(p => (
-                   <div>name: {p.name}</div>
+                 <>
+                  <div>name: {p.name}</div>
+                  <div style={{ maxWidth: '200px'}}>
+                    <PreviewCompatibleImage imageInfo={p.image} />
+                  </div>
+                 </>
                ))}
             </div>
           </div>
@@ -24,12 +29,6 @@ export const IwiwPageTemplate = ({ title, persons, contentComponent }) => {
       </div>
     </section>
   )
-}
-
-IwiwPageTemplate.propTypes = {
-  title: PropTypes.string.isRequired,
-  content: PropTypes.string,
-  contentComponent: PropTypes.func,
 }
 
 const IwiwPage = ({ data }) => {
@@ -40,7 +39,7 @@ const IwiwPage = ({ data }) => {
       <IwiwPageTemplate
         title={post.frontmatter.title}
         persons={post.frontmatter.person}
-        content={post.html}
+        image={post.frontmatter.image}
       />
     </Layout>
   )
@@ -61,6 +60,13 @@ query IwiwPage($id: String!) {
         fields
         name
         position
+        image {
+          childImageSharp {
+            fluid(maxWidth: 200, quality: 64) {
+              ...GatsbyImageSharpFluid
+            }
+          }
+        }
       }
     }
   }
