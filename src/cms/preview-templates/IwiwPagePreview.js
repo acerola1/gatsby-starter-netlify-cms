@@ -6,9 +6,8 @@ const IwiwPagePreview = ({ entry, widgetFor }) => {
   const data = entry.getIn(['data']).toJS()
   return (  
     <IwiwPageTemplate
-      title={entry.getIn(['data', 'title'])}
-      persons={entry.getIn(['data', 'person'])}
-      image={data.image}
+      title={data.title}
+      persons={data}
     />
   )
 }

@@ -16,12 +16,12 @@ export const IwiwPageTemplate = ({ title, persons }) => {
                 {title}
               </h2>
                {persons.map(p => (
-                 <>
+                 <div className="box">
                   <div>name: {p.name}</div>
                   <div style={{ maxWidth: '200px'}}>
                     <PreviewCompatibleImage imageInfo={p.image} />
                   </div>
-                 </>
+                 </div>
                ))}
             </div>
           </div>
@@ -38,7 +38,7 @@ const IwiwPage = ({ data }) => {
     <Layout>
       <IwiwPageTemplate
         title={post.frontmatter.title}
-        persons={post.frontmatter.person}
+        persons={post.frontmatter.persons}
         image={post.frontmatter.image}
       />
     </Layout>
@@ -56,7 +56,7 @@ query IwiwPage($id: String!) {
   markdownRemark(id: {eq: $id}) {
     frontmatter {
       title
-      person {
+      persons {
         fields
         name
         position

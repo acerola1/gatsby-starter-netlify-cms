@@ -50,4 +50,4 @@ collections:
         fields:
           - {label: "Template Key", name: "templateKey", widget: "hidden", default: "about-page"}
           - {label: "Title", name: "title", widget: "string"}
-          - {label: Személy, name: person, widget: list, fields: [{label: Név, name: name, widget: string}, {label: Pozíció, name: position, widget: string}, {label: Területek, name: fields, widget: text}, {label: Image, name: image, widget: image}]}
+          - {label: Személy, name: persons, widget: list, fields: [{label: Név, name: name, widget: string}, {label: Pozíció, name: position, widget: string}, {label: Területek, name: fields, widget: text}, {label: Image, name: image, widget: image}]}

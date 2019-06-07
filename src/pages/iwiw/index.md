@@ -1,7 +1,7 @@
 ---
 templateKey: iwiw-page
 title: Who is who
-person:
+persons:
   - fields: |-
       Funkcionális tesztelés
       Manuális és automatizált tesztelés
